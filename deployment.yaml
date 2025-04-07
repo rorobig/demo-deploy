@@ -50,20 +50,20 @@ spec:
       nodePort: 30080
   type: NodePort
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: simple-webapp-loadbalancer
-  namespace: default
-spec:
-  selector:
-    app: simple-webapp
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: LoadBalancer
----
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: simple-webapp-loadbalancer
+#   namespace: default
+# spec:
+#   selector:
+#     app: simple-webapp
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80
+#   type: LoadBalancer
+# ---
 apiVersion: v1
 kind: Service
 metadata:
