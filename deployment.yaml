@@ -67,46 +67,46 @@ metadata:
 spec:
   type: ExternalName
   externalName: example.com
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: simple-webapp-ingress
-spec:
-  rules:
-    - host: simple-webapp.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: simple-webapp-clusterip
-                port:
-                  number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: simple-webapp-ingress
-  namespace: default
-  annotations:
-    kubernetes.io/ingress.class: "traefik" # Traefik Ingress controller
-spec:
-  ingressClassName: traefik
-  rules:
-    - host: simple-webapp.local # Replace with your desired domain or use an IP for local testing
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: simple-webapp-clusterip
-                port:
-                  number: 80
-  tls:
-    - hosts:
-        - simple-webapp.local # Add the same host here for TLS
-      secretName: simple-webapp-tls # Replace with your TLS secret if you have one
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: simple-webapp-ingress
+# spec:
+#   rules:
+#     - host: simple-webapp.local
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: simple-webapp-clusterip
+#                 port:
+#                   number: 80
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: simple-webapp-ingress
+#   namespace: default
+#   annotations:
+#     kubernetes.io/ingress.class: "traefik" # Traefik Ingress controller
+# spec:
+#   ingressClassName: traefik
+#   rules:
+#     - host: simple-webapp.local # Replace with your desired domain or use an IP for local testing
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: simple-webapp-clusterip
+#                 port:
+#                   number: 80
+#   tls:
+#     - hosts:
+#         - simple-webapp.local # Add the same host here for TLS
+#       secretName: simple-webapp-tls # Replace with your TLS secret if you have one
 
